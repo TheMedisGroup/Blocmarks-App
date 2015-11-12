@@ -29,7 +29,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'figaro', '1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
