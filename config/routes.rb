@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:update, :show, :index]
-  get 'welcome/index'
 
+  get 'welcome/index'
   get 'welcome/about'
+
+  post :incoming, to: 'incoming#create'
 
   root to: 'welcome#index'
 
