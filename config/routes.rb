@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'topics/index'
+
+  get 'topics/show'
+
+  get 'topics/new'
+
+  get 'topics/edit'
+
   devise_for :users
 
   resources :users, only: [:update, :show, :index]
@@ -17,7 +25,7 @@ Rails.application.routes.draw do
 
   post :incoming, to: 'incoming#create'
 
-  root to: 'welcome#index'
+  root to: 'welcome#about'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
