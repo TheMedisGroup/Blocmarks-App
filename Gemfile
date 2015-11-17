@@ -52,7 +52,7 @@ group :development do
   gem 'spring'
 end
 
-gem :production do
+group :production do
 
   gem "pg"
 
