@@ -2,6 +2,7 @@ class IncomingController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
+    puts "hello world"
     @user = User.find(params[:sender]) #Find the user by using params[:sender]
     @topic = Topic.find(params[:subject]) #Find the topic by using params[:subject]
     @url = params["body-plain"]
@@ -10,6 +11,7 @@ class IncomingController < ApplicationController
       @user = User.new(params[:sender])
       @user.save #check if the user is nil, if so , create and save a new user
     else
+
     end
 
     if topic.nil? #Check if the topic is nil, if so, create and save a new topic
