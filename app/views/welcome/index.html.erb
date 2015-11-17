@@ -1,9 +1,19 @@
-<br/>
-<div class="jumbotron">
-  <h1>Welcome to BlocMarks!</h1>
-  <p id="index-title">This is where sharing your favorite sites becomes a reality.</p>
-  <p>
-    <%= link_to "Sign In", new_user_session_path, class: 'btn btn-primary' %> or
-    <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-primary' %>
-  </p>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <h1>Welcome to BlocMarks!</h1>
+      <p id="index-title">This is where sharing your favorite sites becomes a reality.</p>
+    </div>
+    <div class="row">
+      <% unless current_user %>
+      <div class="col-md-6 pull-left"
+      <h2><%= link_to "Create a new account", new_user_registration_path %></h2><br />
+    </div>
+    <div class="col-md-6">
+      <h2>Already have an account?</h2>
+      <h4><%= link_to "Sign In", new_user_session_path %></h4>
+    </div>
+    <% end %>
+  </div>
+</div>
 </div>

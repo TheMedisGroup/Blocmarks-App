@@ -1,2 +1,10 @@
-<h1>Topics#show</h1>
-<p>Find me in app/views/topics/show.html.erb</p>
+<h1><%= @topic.name %></h1>
+<% if policy(@topic).update? %>
+  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-success' do'
+    <span class="glyphicon glyphicon-edit">&nbsp;</span>
+  <% end %>
+<% end %>
+
+<p><% @topic.bookmarks.each do |bookmark| %>
+  <%= link_to "#{bookmark.url}", @url %>
+  <% end %>
