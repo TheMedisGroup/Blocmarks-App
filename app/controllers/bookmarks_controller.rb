@@ -3,7 +3,7 @@ class BookmarksController < ApplicationController
   def index
     @topics = Topic.all
     @user = current_user
-    @bookmark = Bookmark.where(params[user_id:current_user.id]).first || Bookmark.where(params[:topic_id]).first)
+    @bookmark = Bookmark.where(params[user_id:current_user.id]).first || Bookmark.where(params[:topic_id]).first
   end
 
   def show
@@ -29,8 +29,8 @@ class BookmarksController < ApplicationController
   def edit
   end
 
-private
+  private
   def bookmark_params
     params.require(:bookmark).permit(:url)
   end
-end
+en
