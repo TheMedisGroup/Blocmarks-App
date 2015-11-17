@@ -3,7 +3,7 @@ class IncomingController < ApplicationController
 
   def create
     puts "hello world"
-    @user = User.find(params[:sender]) #Find the user by using params[:sender]
+    @user = User.find_by(email: params[:sender]) #Find the user by using params[:sender]
     @topic = Topic.find(params[:subject]) #Find the topic by using params[:subject]
     @url = params["body-plain"]
     #Assign the url to a variable after retrieving it from params["body-plain"]
