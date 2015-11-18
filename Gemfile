@@ -31,6 +31,7 @@ gem 'devise'
 # gem 'unicorn'
 gem 'figaro', '1.0'
 gem 'will_paginate', '~> 3.0.5'
+gem 'pundit'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

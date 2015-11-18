@@ -3,14 +3,15 @@ class LikesController < ApplicationController
 
   def create
     @bookmark = Bookmark.find(params[:bookmark_id])
-    like = current_user.likes.build(bookmark: @bookmark)
+    @like = current_user.likes.build(bookmark: @bookmark)
+    authorize @like
 
     if like.save
       flash[:notice] = "Bookmark is totally liked. Well Done."
-      redirect_to bookmarks_path
+      redirect_to request_referer
     else
       flash[:error] = "Please Try Again."
-      redirect_to bookmarks_path
+      redirect_to :back
     end
   end
 
@@ -21,11 +22,11 @@ class LikesController < ApplicationController
     authorize @like
 
     if like.destroy
-      flash[:notice] = "Link deleted."
-      redirect_to topic_bookmark_path
+      flash[:notice] = "Like deleted."
+      redirect_to request_referer
     else
       flash[:error] = "Please Try Again."
-      redirect_to topic_bookmark_path
+      redirect_to :back
     end
   end
 
