@@ -6,9 +6,9 @@ class LikesController < ApplicationController
     @like = current_user.likes.build(bookmark: @bookmark)
     authorize @like
 
-    if like.save
+    if @like.save
       flash[:notice] = "Bookmark is totally liked. Well Done."
-      redirect_to request_referer
+      redirect_to request.referer
     else
       flash[:error] = "Please Try Again."
       redirect_to :back
@@ -21,9 +21,9 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
     authorize @like
 
-    if like.destroy
+    if @like.destroy
       flash[:notice] = "Like deleted."
-      redirect_to request_referer
+      redirect_to request.referer
     else
       flash[:error] = "Please Try Again."
       redirect_to :back
@@ -32,7 +32,7 @@ class LikesController < ApplicationController
 
 private
   def load_bookmark_and_like
-    @bookmark = Bookmark.find(parmas[:bookmark_id])
+    @bookmark = Bookmark.find(params[:bookmark_id])
     @like = @bookmark.likes.where(user_id: current_user.id).first
   end
 end
