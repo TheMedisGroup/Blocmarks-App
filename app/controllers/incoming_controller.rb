@@ -3,6 +3,8 @@ class IncomingController < ApplicationController
 
   def create
     puts params
+    puts "hello there"
+    puts params[:sender]
     @user = User.find_by(email: params[:sender]) #Find the user by using params[:sender]
     puts @user
     if @user.nil? || @user.pending_invite?
