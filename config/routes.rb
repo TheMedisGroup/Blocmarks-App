@@ -1,31 +1,32 @@
 Rails.application.routes.draw do
 
-  get 'topics/index'
-
-  get 'topics/show'
-
-  get 'topics/new'
-
-  get 'topics/edit'
-
-  devise_for :users
-
-  resources :users, only: [:update, :show, :index]
-
-  resources :topics do
-    resources :bookmarks, except: [:index] do
-      resource :likes, only: [:create, :destroy]
-    end
-  end
-
-  get 'welcome/index'
-  get 'welcome/about'
+  post :incoming, to: 'incoming#create'
 
   get 'users/show'
 
-  post :incoming, to: 'incoming#create'
+  get 'bookmarks/my_bookmarks'
 
-  root to: 'welcome#about'
+  get 'topics/my_topics'
+
+  resources :topics do
+    resources :bookmarks, except: [:index, :new]
+  end
+
+  resources :bookmarks, only: [:index] do
+    resources :likes, only: [:create, :destroy]
+  end
+
+  devise_for :users
+  resources :users, only: [:show]
+
+  get 'welcome/index'
+
+  get 'welcome/about'
+
+  get 'welcome/faq'
+
+  get 'welcome/search'
+    root to: 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

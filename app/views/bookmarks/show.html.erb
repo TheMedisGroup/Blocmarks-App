@@ -1,0 +1,5 @@
+<div class="container">
+  <h1>Bookmarks</h1>
+  <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
+  <%= link_to "#{@bookmark.url}", @bookmark.url %>
+</div>

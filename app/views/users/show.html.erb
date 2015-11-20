@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h1><%= "#{current_user.name}" %></h1>
+    <div class="col-md-4">
+      <h2>My Topics</h2>
+      <% current_user.topics.each do |topic| %>
+      <h3><%= link_to "#{topic.title}", topic %><br /></h3>
+      <% topic.bookmarks.each do |bookmark| %>
+      <h5><%= link_to "#{bookmark.url}", bookmark.url %><br /></h5>
+      <% end %>
+      <% end %>
+      <%= link_to "All Topics", topics_path, class: 'btn btn-info btn-top btn-bottom' %>
+    </div>
+    <div class="col-md-4">
+      <h2>My Bookmarks</h2>
+      <% current_user.bookmarks.each do |bookmark| %>
+      <h4><%= link_to "#{bookmark.url}", bookmark.url %><small><%= link_to " (#{bookmark.topic.title})", bookmark.topic %></small><br /></h4>
+      <% end %>
+      <%= link_to "All Bookmarks", bookmarks_path, class: 'btn btn-info btn-top btn-bottom' %>
+    </div>
+    <div class="col-md-4">
+      <h2>Liked Bookmarks</h2>
+      <% current_user.liked_bookmarks.each do |bookmark| %>
+      <h5><%= link_to "#{bookmark.url}", bookmark.url %>
+        <%= render partial: 'likes/like', locals: { bookmark: bookmark } %></h5>
+        <% end %>
+      </div>
+    </div>
+  </div>

@@ -27,6 +27,7 @@ gem 'bootstrap-sass'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
+gem 'devise_invitable', '~> 1.4.1'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'figaro', '1.0'

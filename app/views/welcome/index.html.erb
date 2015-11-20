@@ -1,19 +1,60 @@
 <div class="container">
-  <div class="jumbotron">
-    <div class="row">
-      <h1>Welcome to BlocMarks!</h1>
-      <p id="index-title">This is where sharing your favorite sites becomes a reality.</p>
+  <% unless current_user %>
+  <div class="jumbotron no-margin">
+    <div class="row no-margin no-padding">
+      <h1>Blocmarks!</h1>
+      <p>Where we are changing bookmarking forever.</p>
     </div>
-    <div class="row">
-      <% unless current_user %>
-      <div class="col-md-6 pull-left"
-      <h2><%= link_to "Create a new account", new_user_registration_path %></h2><br />
+    <div class="row no-margin">
+      <div class="col-md-6 pull-left no-padding">
+        <h2><%= link_to "Create a new account", new_user_registration_path %></h2><br />
+      </div>
+      <div class="col-md-6 no-padding">
+        <h2>Already have an account? </h2>
+        <h4><%= link_to "Sign in", new_user_session_path %></h4>
+      </div>
     </div>
-    <div class="col-md-6">
-      <h2>Already have an account?</h2>
-      <h4><%= link_to "Sign In", new_user_session_path %></h4>
-    </div>
-    <% end %>
   </div>
-</div>
-</div>
+  <% else %>
+  <div class="jumbotron no-margin">
+    <div class="row no-margin no-padding">
+      <h1>Bookmark It</h1>
+      <p>Are you looking for a new way to organize your bookmarks and share them with friends?</p>
+    </div>
+  </div>
+  <div class="row no-margin">
+    <div class="col-md-4 pull-left">
+      <br />
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+          <h3><%= link_to "All Topics", topics_path %></h3>
+          <h3><%= link_to "My Topics", topics_my_topics_path %></h3>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <br />
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+          <h3><%= link_to "All Bookmarks", bookmarks_path %>
+            <h3><%= link_to "My Bookmarks", bookmarks_my_bookmarks_path %></h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <br />
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+          </div>
+          <div class="panel-body">
+            <h3><%= link_to "Invite Friends", new_invitation_path(:user) %></h3>
+            <h3>&nbsp; </h3>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
