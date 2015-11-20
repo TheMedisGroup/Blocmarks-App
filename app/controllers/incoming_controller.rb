@@ -4,7 +4,7 @@ class IncomingController < ApplicationController
   def create
     puts "hello there"
     puts params[:sender]
-    puts "testing 2"
+    puts "testing 2 "
     users = User.where(email: params[:sender])
     puts "hello there 3"
     if users.count == 0
