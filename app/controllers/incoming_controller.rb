@@ -5,7 +5,8 @@ class IncomingController < ApplicationController
     puts params
     puts "hello there"
     puts params[:sender]
-    @user = User.find_by(email: params[:sender]) #Find the user by using params[:sender]
+    users = User.where(email: params[:sender])
+    @user = users.first ? users.first : nil #Find the user by using params[:sender]
     puts @user
     if @user.nil? || @user.pending_invite?
       User.invite!(email: params[:sender], name: params[:sender])
