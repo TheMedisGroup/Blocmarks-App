@@ -8,46 +8,46 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
+  <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "Home", welcome_index_path %></li>
+            <li><%= link_to "About", welcome_about_path %></li>
+            <li><%= link_to "Topics", topics_path %></li>
+            <li><%= link_to "Bookmarks", bookmarks_path %></li>
+          </ul>
 
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li><%= link_to "Home", welcome_index_path %></li>
-          <li><%= link_to "About", welcome_about_path %></li>
-          <li><%= link_to "Topics", topics_path %></li>
-          <li><%= link_to "Bookmarks", bookmarks_path %></li>
-        </ul>
+          <ul class="nav navbar-nav pull-right">
+            <% if current_user %>
+              <li><%= link_to (current_user.name || current_user.email), user_path(current_user) %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if current_user %>
-          <li><%= link_to (current_user.name || current_user.email), user_path(current_user) %></li>
-          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-          <li><%= link_to "Sign In", new_user_session_path %></li>
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <% end %>
-        </ul>
+    </nav>
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
       </div>
-    </div>
-  </nav>
-  <% if flash[:notice] %>
-  <div class="alert alert-success">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <%= flash[:notice] %>
+    <% elsif flash[:error] %>
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:error] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <%= yield %>
   </div>
-  <% elsif flash[:error] %>
-  <div class="alert alert-danger">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <%= flash[:error] %>
-  </div>
-  <% elsif flash[:alert] %>
-  <div class="alert alert-warning">
-    <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <%= flash[:alert] %>
-  </div>
-  <% end %>
-  <%= yield %>
 
 </body>
 </html>

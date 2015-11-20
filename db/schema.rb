@@ -11,40 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120151555) do
+ActiveRecord::Schema.define(version: 20151120161844) do
 
-  create_table "bookmarks", force: true do |t|
+  create_table "bookmarks", force: :cascade do |t|
     t.string   "url"
     t.integer  "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "bookmarks", ["topic_id"], name: "index_bookmarks_on_topic_id"
-  add_index "bookmarks", ["user_id"], name: "index_bookmakes_on_user_id"
+  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
-  create_table "likes", force: true do |t|
-    t.integer "user_id"
-    t.integer "bookmark_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "likes", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "bookmark_id"
+    t.integer  "user_id"
   end
 
   add_index "likes", ["bookmark_id"], name: "index_likes_on_bookmark_id"
   add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
-  create_table "topics", force: true do |t|
+  create_table "topics", force: :cascade do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "topics", ["user_id"], name: "index_topics_on_user_id"
 
-  create_table "users", force: true do |t|
-    t.string   "name"
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
@@ -59,8 +58,8 @@ ActiveRecord::Schema.define(version: 20151120151555) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "name"
     t.boolean  "public",                 default: false
     t.string   "invitation_token"
@@ -71,7 +70,6 @@ ActiveRecord::Schema.define(version: 20151120151555) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
-    t.boolean  "public",                 default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
