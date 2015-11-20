@@ -6,14 +6,13 @@ class IncomingController < ApplicationController
     puts "hello there"
     puts params[:sender]
     users = User.where(email: params[:sender])
-    @user = users.first ? users.first : nil #Find the user by using params[:sender]
-    puts @user
-    puts "hello there 3"
-    if @user.nil? || @user.pending_invite?
+
+    if users.count > 0
       puts "hello there 4"
       User.invite!(email: params[:sender], name: params[:sender])
       puts "hello there 5"
     else
+      @user = users.first
       puts params[:subject]
       @topic = Topic.find_or_create_by(title: params[:subject])
       puts @topic
