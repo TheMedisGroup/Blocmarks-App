@@ -2,7 +2,6 @@ class IncomingController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def create
-    puts params
     puts "hello there"
     puts params[:sender]
     users = User.where(email: params[:sender])
