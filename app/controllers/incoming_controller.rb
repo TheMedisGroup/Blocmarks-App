@@ -5,7 +5,7 @@ class IncomingController < ApplicationController
     puts "hello there"
     puts params[:sender]
     users = User.where(email: params[:sender])
-
+    puts "hello there 3"
     if users.count == 0
       puts "hello there 4"
       User.invite!(email: params[:sender], name: params[:sender])
