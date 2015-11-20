@@ -22,17 +22,16 @@
 @import "font-awesome";
 
 .user-info {
-  margin-top: 12px;
+  margin-top: 9px;
 }
 
 .nav {
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .navbar {
-  height: 55px;
-  color: green;
+  height: 57px;
 }
 
 .no-padding {
@@ -51,6 +50,36 @@
   width: 40%;
 }
 
+.center {
+  text-align: center;
+}
+
 #search {
-  padding-top: 5px;
+  padding-top: 2px;
+}
+
+#index-title {
+  text-align: center;
+  color: orange;
+  font-family: cursive;
+}
+
+h1 {
+  color: blue;
+  font-family: cursive;
+  font-weight: bold;
+  text-align: center;
+}
+
+p {
+  color: red;
+  font-family: cursive;
+  font-weight: bolder;
+  text-align: center;
+}
+
+h4 {
+  color: green;
+  font-family: cursive;
+  font-weight: bold;
 }
