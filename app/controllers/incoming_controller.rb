@@ -7,7 +7,7 @@ class IncomingController < ApplicationController
     puts "testing 2 "
     users = User.where(email: params[:sender])
     puts "hello there 3"
-    if users.count == 0
+    if users.count == 0 || @topic.count == 0
       puts "hello there 4"
       User.invite!(email: params[:sender], name: params[:sender])
       puts "hello there 5"
