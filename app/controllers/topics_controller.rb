@@ -22,9 +22,9 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
+    @topic = current_user.topics.build(topic_params)
     authorize @topic
-    if @topic.update_attributes(topic_params)
+    if @topic.save!
       flash[:notice] = "Topic was updated successfully."
       redirect_to topics_path
     else

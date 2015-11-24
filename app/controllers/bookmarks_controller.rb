@@ -7,10 +7,24 @@ class BookmarksController < ApplicationController
   end
 
   def show
+
+    def destroy
+      @topic = Topic.find(params[:id])
+      title = @topic.title
+      authorize @topic
+
+      if @topic.destroy
+        flash[:notice] = "\"#{title}\" was successfully deleted."
+        redirect_to topics_path
+      else
+        flash[:error] = "There was an error when deleting your topic."
+        reder :show
+      end
+    end
     @topic = Topic.where(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
   end
-  
+
   def new
   end
 
@@ -29,6 +43,19 @@ class BookmarksController < ApplicationController
   end
 
   def edit
+  end
+
+  def destroy
+    @bookmark = Bookmark.find(params[:id])
+    authorize @bookmark
+
+    if @bookmark.destroy
+      flash[:notice] = "bookmark was successfully deleted."
+      redirect_to topics_path
+    else
+      flash[:error] = "There was an error when deleting your bookmark."
+      reder :show
+    end
   end
 
   private
