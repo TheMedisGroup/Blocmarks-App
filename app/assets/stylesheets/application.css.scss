@@ -23,11 +23,13 @@
 
 .user-info {
   margin-top: 9px;
+	font-family: 'Josefin Slab', serif;
 }
 
 .nav {
   margin-top: 5px;
   margin-bottom: 10px;
+	font-family: 'Josefin Slab', serif;
 }
 
 .navbar {
@@ -44,6 +46,7 @@
 
 .btn-top{
   margin-top: 7px;
+	font-family: 'Josefin Slab', serif;
 }
 
 .field-small {
@@ -60,35 +63,40 @@
 
 #index-title {
   text-align: center;
-  font-family: Impact, Charcoal, sans-serif;
+	font-family: 'Josefin Slab', serif;
 }
 
 h1 {
-  color: #00FFFF;
-  font-family: cursive;
+  color: rgba(238, 20, 46, 0.87);
+  font-family: 'Poiret One', cursive;
   font-weight: bold;
   text-align: center;
 }
 
 p {
-  font-family: Impact, Charcoal, sans-serif;
+	font-family: 'Josefin Slab', serif;
   font-weight: bolder;
   text-align: center;
 }
 
 h4 {
+	color: rgb(134, 134, 135);
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
   text-align: center;
-  font-family: Impact, Charcoal, sans-serif;
 }
 
 h3 {
   text-align: center;
-  font-family: Impact, Charcoal, sans-serif;
+	font-family: 'Josefin Slab', serif;
 }
 
 h2 {
   color: #989898;
-  font-family: cursive;
+	font-family: 'Josefin Slab', serif;
   font-weight: bold;
   text-align: center;
+}
+div {
+	font-family: 'Josefin Slab', serif;
 }
